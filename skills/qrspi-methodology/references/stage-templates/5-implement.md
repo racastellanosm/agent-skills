@@ -22,12 +22,18 @@
 - **Automated Tests:** `X passed, 0 failed`
 - **Acceptance Criteria Sign-Off:** All criteria from `1-question.md` verified.
 
-## 5.3 Handoff & Merge Notes
+## 5.3 Surgical Execution & Code Integrity Audit
+- [ ] **Zero Orthogonal Edits:** Modified ONLY the files planned in `4-plan.md`. No adjacent refactoring, style tampering, or re-formatting.
+- [ ] **Comments & Docstrings Preserved:** No pre-existing comments or documentation were mutated or deleted.
+- **Unrelated Dead Code / Tech Debt Observations:**
+  - *(List any unrelated dead code observed during implementation for future cleanup — DO NOT DELETE IT HERE)*
+
+## 5.4 Handoff & Merge Notes
 - **Key Changes Summary:**
 - **Known Limitations / Next Steps:**
 
-## 5.4 Mandatory Final User Acceptance & Sign-Off
-> 🛑 **MANDATORY HARD STOP:** The agent must present the implementation summary, test evidence, and verification logs to the user, STOP calling tools, and END ITS TURN.
+## 5.5 Mandatory Final User Acceptance & Sign-Off
+> 🛑 **MANDATORY HARD STOP:** The agent must present the implementation summary, test evidence, surgical changes audit, and verification logs to the user, STOP calling tools, and END ITS TURN.
 - [ ] **Final User Acceptance:** `[PENDING | ACCEPTED]`
 - **Accepted by:** `<User Name / Handle>`
-- **Acceptance Timestamp:** `YYYY-MM-DD HH:MM:SS UTC`
+- **Approval Timestamp:** `YYYY-MM-DD HH:MM:SS UTC`

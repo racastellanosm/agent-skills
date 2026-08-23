@@ -23,6 +23,26 @@ QRSPI enforces a strict phase-gated engineering process to eliminate hallucinati
 
 ---
 
+## 🛡️ Core Engineering Invariants & Principles
+
+To prevent LLMs from silently guessing, overengineering, or causing orthogonal code regressions, QRSPI enforces three non-negotiable principles:
+
+1. **Think Before Coding (Don't Guess. Surface Confusion. Present Trade-Offs.):**
+   * *State Assumptions Explicitly:* Never pick an interpretation silently and run with it.
+   * *Stop on Confusion:* If requirements or code ground truths conflict, stop and ask immediately.
+   * *Push Back When Warranted:* Proactively propose simpler, standard alternatives if an overcomplicated approach is requested.
+2. **Simplicity First (Occam's Engineering. Zero Speculative Bloat.):**
+   * *Minimum Code:* Write only the minimal code that cleanly solves the problem. Nothing speculative.
+   * *No Single-Use Abstractions:* Never introduce unneeded interfaces, factories, or layers for single-use logic.
+   * *The Senior Engineer Simplicity Test:* If 200 lines could be 50, rewrite it into the most direct solution.
+3. **Surgical Changes (Touch Only What You Must. Zero Orthogonal Edits.):**
+   * *Blast Radius Containment:* Touch only the files and symbols strictly required to fulfill the task.
+   * *Zero Orthogonal Refactoring:* Do NOT "improve", reformat, or re-indent adjacent functions or files that aren't broken.
+   * *Preserve Comments & Style:* Never delete or strip existing comments/docstrings. Match the existing codebase idioms strictly.
+   * *Dead Code Policy:* If unrelated dead code is observed, record it in the execution log—never delete it silently.
+
+---
+
 ## 🧠 Memory, Modular Persistence & Team Handoffs
 
 To eliminate gigantic monolithic documents and optimize token usage, each feature session is organized into a modular folder with 1 Markdown document per QRSPI stage:

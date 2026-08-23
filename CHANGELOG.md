@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.14.0] - 2026-08-23
+
+### Added
+- **Core Engineering Principles Integration (Karpathy Invariants)**:
+  - Enforced **Think Before Coding**: Mandates explicit assumptions, stop-on-confusion triggers, and proactive pushback when simpler, standard alternatives exist.
+  - Enforced **Simplicity First**: Mandates Occam's engineering and the *Senior Engineer Simplicity Test* (no speculative abstractions, no single-use interfaces, no unrequested configurability).
+  - Enforced **Surgical Changes**: Restricts blast radius, forbids orthogonal refactoring/reformatting of adjacent code, preserves pre-existing comments, and logs dead code rather than silently deleting it.
+  - Updated all 5 modular stage templates (`1-question.md` through `5-implement.md`), `SKILL.md`, `phases-checklist.md`, and lifecycle `prompt-hook.sh`.
+
 ## [1.13.0] - 2026-08-22
 
 ### Added
