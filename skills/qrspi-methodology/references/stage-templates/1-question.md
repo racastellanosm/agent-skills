@@ -51,17 +51,27 @@ Decision Tree:
 └── Option B (Alternative): [e.g. Python 3.12 + PyTest + LRU Dict]       -> Trade-off: [Rapid implementation vs runtime speed]
 ```
 
-## 1.7 Ambiguities & Clarifications Resolution Table
+## 1.7 Think Before Coding (Assumptions, Confusion & Proactive Pushback)
+*Enforce explicit reasoning: never guess silently, stop when confused, and push back if a simpler approach exists.*
+- **Explicit Assumptions Stated:**
+  - *Assumption 1:* 
+  - *Assumption 2:* 
+- **Confusions / Unclear Points Surfaced (Stop & Ask):**
+  - *Unclear Point:* *(If any ambiguity exists in code or requirements, state it here and ask)*
+- **Proactive Pushback & Simplification Proposals:**
+  - *Simpler Alternative:* *(If a simpler/more standard approach exists compared to prompt, propose it here)*
+
+## 1.8 Ambiguities & Clarifications Resolution Table
 | Ambiguity / Assumption | User / Code Confirmation | Resolution Status |
 | :--- | :--- | :--- |
 | e.g. Target Node.js version | Confirmed: Node.js >= 20 LTS | `RESOLVED` |
 
-## 1.8 Acceptance Criteria & Hard Gate
+## 1.9 Acceptance Criteria & Hard Gate
 - [ ] Criterion 1:
 - [ ] Criterion 2:
 - [ ] **Hard Gate Passed:** Problem statement, failure mode mitigations, and decision branches are 100% deterministic and aligned.
 
-## 1.9 Mandatory User Alignment & Approval Gate
+## 1.10 Mandatory User Alignment & Approval Gate
 > 🛑 **MANDATORY HARD STOP:** The agent must present the questions and requirements breakdown above to the user, STOP calling tools, and END ITS TURN. Do not proceed to Phase 2 until user approval is confirmed below.
 - [ ] **User Approval Confirmed:** `[PENDING | APPROVED]`
 - **Approved by:** `<User Name / Handle>`

@@ -1,7 +1,7 @@
 ---
 name: qrspi-methodology
-description: Enforces the QRSPI (Question, Research, Structure, Plan, Implement) engineering methodology. Triggers whenever starting complex features, architectural refactors, multi-file bug investigations, system migrations, or new implementations to ensure zero hallucinations and deterministic software delivery.
-version: 1.12.3
+description: Enforces the QRSPI (Question, Research, Structure, Plan, Implement) engineering methodology. Triggers whenever starting complex features, architectural refactors, multi-file bug investigations, system migrations, or new implementations to ensure zero hallucinations, simplicity-first architecture, and surgical, regression-free code delivery.
+version: 1.14.0
 author: Raul Castellanos
 license: MIT
 compatibility:
@@ -34,15 +34,44 @@ The **QRSPI** methodology is an agentic engineering protocol designed to guarant
 [ 1. QUESTION ] ➔ [ 2. RESEARCH ] ➔ [ 3. STRUCTURE ] ➔ [ 4. PLAN ] ➔ [ 5. IMPLEMENT ]
 ```
 
+---
+
+## 🛡️ Core Engineering Invariants & Principles
+
+AI agents must strictly adhere to three non-negotiable engineering principles across all phases to eliminate silent assumptions, code bloat, and accidental regressions:
+
+> [!IMPORTANT]
+> ### 1. Think Before Coding (Don't Guess. Surface Confusion. Present Trade-Offs.)
+> * **State Assumptions Explicitly:** Never pick an interpretation silently and run with it. If uncertain, state the assumption clearly or ask.
+> * **Surface Ambiguity & Stop on Confusion:** If requirements or codebase ground truths conflict, stop immediately and name what is unclear.
+> * **Push Back When Warranted:** If a simpler, more idiomatic, or standard alternative exists, actively propose it rather than blindly implementing an overcomplicated request.
+> * **Present Trade-Offs:** Outline concrete pros and cons when design decisions exist instead of choosing quietly.
+
+> [!IMPORTANT]
+> ### 2. Simplicity First (Minimum Code. Zero Speculative Engineering.)
+> * **Occam's Engineering:** Write the minimum code that cleanly solves the problem. Nothing speculative.
+> * **No Premature Abstractions:** Never introduce interfaces, design patterns (Factory, Strategy, etc.), or layers for single-use code.
+> * **No Unrequested Flexibility:** Build exactly what is requested—avoid speculative "configurability" or over-defensive error handling for impossible scenarios.
+> * **The Senior Engineer Simplicity Test:** *"If 200 lines could be 50, rewrite it."* Always choose the direct, maintainable solution.
+
+> [!IMPORTANT]
+> ### 3. Surgical Changes (Touch Only What You Must. Zero Orthogonal Edits.)
+> * **Blast Radius Containment:** Touch ONLY the files and symbols strictly required to fulfill the task.
+> * **Zero Orthogonal Refactoring:** Do NOT "improve", reformat, or re-indent adjacent functions, files, or comments that aren't broken.
+> * **Preserve Comments & Existing Style:** Never delete, mutate, or strip existing comments/docstrings. Strictly match the style and idioms of the surrounding codebase.
+> * **Unrelated Dead Code Policy:** If you encounter unrelated dead code or tech debt, **mention it in the execution summary**—NEVER delete or edit it silently.
+
+---
+
 ## 🎯 What is QRSPI?
 
 QRSPI enforces a strict phase-gated engineering process to eliminate hallucinations, prevent regressions, and enforce architectural integrity:
 
-1. **Question**: Socratic stress-testing, failure-mode probing, and zero lazy questions (codebase pre-checked).
+1. **Question**: Socratic stress-testing, failure-mode probing, zero lazy questions, explicit assumptions, and proactive pushback.
 2. **Research**: Discover codebase ground truth, dependencies, and blast radius before modifying files.
-3. **Structure**: Define architectural contracts, invariants, types, and trade-offs.
-4. **Plan**: Formulate an atomic step-by-step checklist with verifiable commands.
-5. **Implement**: Execute sequentially with automated lint/test validation.
+3. **Structure**: Define architectural contracts, invariants, types, and trade-offs applying Simplicity First.
+4. **Plan**: Formulate an atomic step-by-step checklist with verifiable commands and zero orthogonal edits.
+5. **Implement**: Execute surgically and sequentially with automated lint/test validation.
 
 > 🛑 **Invariant: Exactly One Phase per Turn.**  
 > The agent pauses execution and ends its turn at every single phase, presenting its findings, questions, or plan for explicit user approval before advancing.
@@ -99,17 +128,19 @@ Eliminate requirements ambiguity, challenge implicit assumptions, stress-test de
    - **3. Quality & Testing Methodology:** Testing strategy (Test-Driven Development / TDD, unit vs integration, mock strategy, property testing).
    - **4. Concurrency & State Invariants:** Thread safety, sync vs async, in-memory vs persistent storage, error modeling (Result types, exceptions, error codes).
    - **5. Session Persistence Root:** If no prior session root exists, confirm where QRSPI sessions & `INDEX.md` should live (`.qrspi/`, `.docs/`, `.implementations/`, `.sessions/`, or custom).
-3. **Deconstruct Requirements**: Break down the user prompt into explicit Functional Requirements (FRs) and Non-Functional Requirements (NFRs).
-4. **Socratic Stress-Testing (4 Failure Vectors)**: Proactively probe and stress-test the proposal across:
+3. **Explicit Assumptions & Stop When Confused**: State all working assumptions explicitly. If requirements conflict or leave ambiguity, **stop and ask** rather than silently picking an arbitrary branch.
+4. **Proactive Pushback (Simpler Alternatives)**: If a requested design is overcomplicated and a significantly simpler, standard approach exists, proactively propose it.
+5. **Deconstruct Requirements**: Break down the user prompt into explicit Functional Requirements (FRs) and Non-Functional Requirements (NFRs).
+6. **Socratic Stress-Testing (4 Failure Vectors)**: Proactively probe and stress-test the proposal across:
    - **Failure Modes & Resilience**: Downstream outages, network timeouts, fallback behaviors.
    - **Concurrency & Idempotency**: Race conditions, parallel mutations, duplicate submissions.
    - **Backward Compatibility & Migrations**: Breaking API contracts, legacy schema conversions.
    - **Boundary Conditions & Limits**: Empty collections, null states, extreme payload sizes.
-5. **Walk Decision Trees Branch-by-Branch**: When multiple architectural paths exist, present 2-3 structured options with trade-offs and validate interactively with the user (`ask_question` / prompt).
-6. **Persist Stage 1**: Write `<session-root>/YYYY-MM-DD-<feature-slug>/1-question.md` (e.g. `.qrspi/YYYY-MM-DD-<feature-slug>/1-question.md`).
+7. **Walk Decision Trees Branch-by-Branch**: When multiple architectural paths exist, present 2-3 structured options with trade-offs and validate interactively with the user (`ask_question` / prompt).
+8. **Persist Stage 1**: Write `<session-root>/YYYY-MM-DD-<feature-slug>/1-question.md` (e.g. `.qrspi/YYYY-MM-DD-<feature-slug>/1-question.md`).
 
 ### Mandatory Hard Stop (Turn Termination)
-> 🛑 **MANDATORY GATE:** Output the foundational questions (stack, architecture, TDD/methodology, session root), failure vectors, and requirements breakdown to the user. **STOP calling tools and END YOUR TURN.** Do NOT proceed to Phase 2 until the user reviews and confirms approval.
+> 🛑 **MANDATORY GATE:** Output the foundational questions (stack, architecture, TDD/methodology, session root), failure vectors, explicit assumptions, and requirements breakdown to the user. **STOP calling tools and END YOUR TURN.** Do NOT proceed to Phase 2 until the user reviews and confirms approval.
 
 ---
 
@@ -132,49 +163,52 @@ Establish ground-truth facts about the current state of the codebase, dependenci
 ## Phase 3: Structure (System & Architectural Design)
 
 ### Goal
-Formulate the architectural blueprint, data structures, invariants, and interface contracts prior to code modification.
+Formulate the architectural blueprint, data structures, invariants, and interface contracts prior to code modification, enforcing simplicity first.
 
 ### Action Items
-1. **Define Core Abstractions**: Model data contracts, types, schema updates, and public API boundaries.
-2. **Evaluate Trade-offs**: Contrast 2+ technical approaches (e.g., performance vs. complexity, sync vs. async) and justify the chosen path.
+1. **Define Core Abstractions & Simplicity First**: Model data contracts, types, schema updates, and public API boundaries. Apply the **Senior Engineer Simplicity Test**: no single-use abstractions, no speculative configurability, and minimum surface area.
+2. **Evaluate Trade-offs**: Contrast 2+ technical approaches (e.g., performance vs. complexity, sync vs. async) and justify the chosen path explicitly.
 3. **Map Error Handling & Invariants**: Enumerate error states, fallback behaviors, concurrency locks, and idempotency guarantees.
 4. **Persist Stage 3 & Register ADR**: Write `<session-root>/YYYY-MM-DD-<feature-slug>/3-structure.md` and append the record to `<session-root>/INDEX.md`.
 
 ### Mandatory Hard Stop (Turn Termination)
-> 🛑 **MANDATORY GATE:** Output the architecture design, types, and trade-offs to the user. **STOP calling tools and END YOUR TURN.** Do NOT proceed to Phase 4 until the user reviews and approves the design.
+> 🛑 **MANDATORY GATE:** Output the architecture design, types, simplicity assessment, and trade-offs to the user. **STOP calling tools and END YOUR TURN.** Do NOT proceed to Phase 4 until the user reviews and approves the design.
 
 ---
 
 ## Phase 4: Plan (Atomic, Verifiable Execution Plan)
 
 ### Goal
-Construct a deterministic, step-by-step checklist where each action has a corresponding validation step.
+Construct a deterministic, step-by-step checklist where each action has a corresponding validation step, containing blast radius strictly.
 
 ### Action Items
 1. **Break Down Tasks Atomically**: Each step must represent a single logical change (e.g., 1 type definition, 1 test suite, 1 module update).
 2. **Define Test Strategy**: Formulate unit tests, integration tests, or end-to-end verification commands for each step.
-3. **Establish Rollback/Checkpoints**: Ensure each phase leaves the repository in a compilable/testable state.
-4. **Persist Stage 4**: Write `<session-root>/YYYY-MM-DD-<feature-slug>/4-plan.md`.
+3. **Strict Blast Radius Containment**: Specify the exact files to create/edit. Forbid any orthogonal or speculative edits to adjacent files.
+4. **Establish Rollback/Checkpoints**: Ensure each phase leaves the repository in a compilable/testable state.
+5. **Persist Stage 4**: Write `<session-root>/YYYY-MM-DD-<feature-slug>/4-plan.md`.
 
 ### Mandatory Hard Stop (Turn Termination)
-> 🛑 **MANDATORY GATE:** Output the step-by-step checklist and automated verification commands to the user. **STOP calling tools and END YOUR TURN.** Do NOT modify source code or start Phase 5 until the user gives explicit approval.
+> 🛑 **MANDATORY GATE:** Output the step-by-step checklist, blast radius boundaries, and automated verification commands to the user. **STOP calling tools and END YOUR TURN.** Do NOT modify source code or start Phase 5 until the user gives explicit approval.
 
 ---
 
 ## Phase 5: Implement (Strict Execution & Verification)
 
 ### Goal
-Execute the plan with zero regressions, strict test coverage, and continuous validation.
+Execute the plan surgically with zero regressions, strict test coverage, and continuous validation.
 
 ### Action Items
-1. **Atomic Code Changes**: Follow the checklist sequentially using targeted edit tools (`replace_file_content` / `write_to_file`). Avoid sweeping unstaged rewrites.
-2. **Preserve Code Quality & Style**: Strictly match existing idioms, linter rules, typing standards, and comments/docstrings.
-3. **Execute Automated Verification**: Run compilers, linters, and test suites after every logical step (`rtk` or native test runner).
-4. **Persist Stage 5 & Update ADR**: Write `<session-root>/YYYY-MM-DD-<feature-slug>/5-implement.md` and update status in `<session-root>/INDEX.md`.
-5. **Final Regression Sweep**: Verify edge cases, error conditions, and user acceptance criteria against `1-question.md`.
+1. **Surgical Code Changes**: Follow the checklist sequentially using targeted edit tools (`replace_file_content` / `write_to_file`). Touch ONLY what is required.
+2. **Zero Orthogonal Refactoring**: Never "improve", reformat, or re-indent adjacent code, functions, or comments. Match existing style and idioms strictly.
+3. **Preserve Comments & Docstrings**: Never delete or mutate existing comments/documentation you did not create.
+4. **Unrelated Dead Code Handling**: If you discover unrelated dead code or technical debt, record it in the execution log—do NOT delete it.
+5. **Execute Automated Verification**: Run compilers, linters, and test suites after every logical step (`rtk` or native test runner).
+6. **Persist Stage 5 & Update ADR**: Write `<session-root>/YYYY-MM-DD-<feature-slug>/5-implement.md` and update status in `<session-root>/INDEX.md`.
+7. **Final Regression Sweep**: Verify edge cases, error conditions, and user acceptance criteria against `1-question.md`.
 
 ### Final Sign-Off & Verification Proof
-> 🛑 **MANDATORY GATE:** Output the execution summary, test suite results, and proof of verification to the user and request final acceptance.
+> 🛑 **MANDATORY GATE:** Output the execution summary, test suite results, surgical changes audit, and proof of verification to the user and request final acceptance.
 
 ---
 
