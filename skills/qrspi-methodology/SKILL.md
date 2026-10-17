@@ -1,7 +1,7 @@
 ---
 name: qrspi-methodology
 description: Enforces the QRSPI (Question, Research, Structure, Plan, Implement) engineering methodology. Triggers whenever starting complex features, architectural refactors, multi-file bug investigations, system migrations, or new implementations to ensure zero hallucinations, simplicity-first architecture, and surgical, regression-free code delivery.
-version: 1.14.0
+version: 1.15.0
 author: Raul Castellanos
 license: MIT
 compatibility:

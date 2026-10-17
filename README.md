@@ -16,6 +16,7 @@ Built and published in strict compliance with the [Agent Skills Open Specificati
 | :--- | :--- | :--- | :--- | :--- |
 | [`qrspi-methodology`](skills/qrspi-methodology) | **Engineering Methodology** | Enforces the deterministic 5-phase engineering protocol (Question, Research, Structure, Plan, Implement) with turn-termination gates and living ADR. | Complex features, architectural refactors, multi-file bug investigations, system migrations. | [📖 User Guide](skills/qrspi-methodology/README.md) · [⚙️ Spec](skills/qrspi-methodology/SKILL.md) |
 | [`docker-and-orchestration`](skills/docker-and-orchestration) | **DevOps & Containerization** | Enforces Zero-Host-Dependencies containerized workflows using Docker, split Compose topologies, and universal Makefile orchestration. | Setting up Docker/Makefiles, writing multi-stage Dockerfiles, configuring Compose, standardizing local dev commands. | [📖 User Guide](skills/docker-and-orchestration/README.md) · [⚙️ Spec](skills/docker-and-orchestration/SKILL.md) |
+| [`secops-scanner`](skills/secops-scanner) | **Security & SecOps** | Enforces a 100% Dockerized security audit across SAST (Semgrep), SCA/Lockfiles (OSV-Scanner), Container/IaC (Trivy), Secrets (Gitleaks), and OWASP ASVS code review with Markdown report generation. | Security audits, SAST scans, dependency CVE checks, Dockerfile/image scans, pre-release security reviews. | [📖 User Guide](skills/secops-scanner/README.md) · [⚙️ Spec](skills/secops-scanner/SKILL.md) |
 
 ---
 
@@ -74,16 +75,24 @@ Skills in this catalog are compatible with **77+ agent harnesses**, including:
 │   │   │   └── phases-checklist.md # Quick-reference phase gate checklist
 │   │   └── scripts/
 │   │       └── verify-session.sh  # Modular session validator
-│   └── docker-and-orchestration/ # 📦 Canonical Docker & Orchestration Skill Package
+│   ├── docker-and-orchestration/ # 📦 Canonical Docker & Orchestration Skill Package
+│   │   ├── SKILL.md          # Canonical Agent Skill specification (agentskills.io)
+│   │   ├── README.md         # Public documentation and usage guide
+│   │   ├── references/
+│   │   │   ├── makefile-orchestration.md # Targets contract, runners & examples
+│   │   │   ├── multi-stage-dockerfiles.md # Multi-stage patterns, distroless & security
+│   │   │   ├── compose-topologies.md # Split compose strategy (base vs dev)
+│   │   │   └── security-hardening.md # Container security invariants & audit checks
+│   │   └── scripts/
+│   │       └── verify-docker-stack.sh # POSIX validator for Makefiles & Dockerfiles
+│   └── secops-scanner/       # 📦 Canonical 100% Dockerized Security Scanner Skill Package
 │       ├── SKILL.md          # Canonical Agent Skill specification (agentskills.io)
 │       ├── README.md         # Public documentation and usage guide
-│       ├── references/
-│       │   ├── makefile-orchestration.md # Targets contract, runners & examples
-│       │   ├── multi-stage-dockerfiles.md # Multi-stage patterns, distroless & security
-│       │   ├── compose-topologies.md # Split compose strategy (base vs dev)
-│       │   └── security-hardening.md # Container security invariants & audit checks
-│       └── scripts/
-│           └── verify-docker-stack.sh # POSIX validator for Makefiles & Dockerfiles
+│       └── references/
+│           ├── audit-report-template.md # Canonical Markdown template for SECURITY-AUDIT-REPORT.md
+│           ├── sast-and-sca-containers.md # Semgrep SAST & Google OSV-Scanner container guide
+│           ├── container-and-iac-trivy.md # Aqua Trivy Dockerfile, Compose & image scanning
+│           └── secrets-and-code-review.md # Gitleaks & OWASP ASVS / NIST review checklist
 ├── AGENTS.md                 # Repository governance & agent directives
 ├── CHANGELOG.md              # Version history following Keep a Changelog
 ├── LICENSE                   # MIT License
