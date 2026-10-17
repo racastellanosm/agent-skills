@@ -1,7 +1,7 @@
 ---
 name: docker-and-orchestration
 description: Enforces the Zero-Host-Dependencies engineering philosophy using Docker, Docker Compose, and a unified Makefile orchestration layer. Triggers when creating, refactoring, or containerizing applications, writing multi-stage Dockerfiles (Distroless/Scratch/Alpine), setting up split Compose topologies (base + dev overrides), or standardizing development workflows with deterministic Makefile targets.
-version: 1.0.0
+version: 1.15.0
 author: Raul Castellanos
 license: MIT
 compatibility:

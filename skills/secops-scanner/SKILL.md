@@ -1,7 +1,7 @@
 ---
 name: secops-scanner
 description: Enforces a 100% Dockerized (Zero-Host-Dependencies) application security audit across SAST (Semgrep), SCA/Dependency CVEs (Google OSV-Scanner), Container & IaC Security (Aqua Trivy), Secret Detection (Gitleaks), and OWASP ASVS / NIST code review. Triggers whenever the user requests a security audit, SAST scan, dependency vulnerability check, Docker image/config scan, or pre-release security assessment, always producing a structured Markdown report with findings and actionable remediations.
-version: 1.0.0
+version: 1.15.0
 author: Raul Castellanos
 license: MIT
 compatibility:
