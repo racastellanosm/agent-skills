@@ -5,7 +5,7 @@
 **Audience:** AI agents and platform engineers contributing to or maintaining skills in this repository.  
 **Standard:** [agentskills.io Open Specification](https://agentskills.io/specification)  
 **Documentation & Code Language:** English (all code, templates, scripts, and documentation).  
-**Version:** 1.14.0  
+**Version:** 1.15.0  
 
 ---
 
@@ -49,16 +49,24 @@ This repository is the canonical reference implementation and distribution packa
 │   │   │   └── phases-checklist.md # Compact phase-gate quality checklist
 │   │   └── scripts/
 │   │       └── verify-session.sh  # POSIX validator for modular QRSPI session directories
-│   └── docker-and-orchestration/ # 📦 Canonical Docker & Orchestration Skill Package
+│   ├── docker-and-orchestration/ # 📦 Canonical Docker & Orchestration Skill Package
+│   │   ├── SKILL.md               # Canonical Agent Skill definition (agentskills.io)
+│   │   ├── README.md              # Public documentation and usage guide
+│   │   ├── references/
+│   │   │   ├── makefile-orchestration.md # Targets contract, runners & examples
+│   │   │   ├── multi-stage-dockerfiles.md # Multi-stage patterns, distroless & security
+│   │   │   ├── compose-topologies.md # Split compose strategy (base vs dev)
+│   │   │   └── security-hardening.md # Container security invariants & audit checks
+│   │   └── scripts/
+│   │       └── verify-docker-stack.sh # POSIX validator for Makefiles & Dockerfiles
+│   └── secops-scanner/           # 📦 Canonical 100% Dockerized Security Scanner Skill Package
 │       ├── SKILL.md               # Canonical Agent Skill definition (agentskills.io)
 │       ├── README.md              # Public documentation and usage guide
-│       ├── references/
-│       │   ├── makefile-orchestration.md # Targets contract, runners & examples
-│       │   ├── multi-stage-dockerfiles.md # Multi-stage patterns, distroless & security
-│       │   ├── compose-topologies.md # Split compose strategy (base vs dev)
-│       │   └── security-hardening.md # Container security invariants & audit checks
-│       └── scripts/
-│           └── verify-docker-stack.sh # POSIX validator for Makefiles & Dockerfiles
+│       └── references/
+│           ├── audit-report-template.md # Canonical Markdown template for SECURITY-AUDIT-REPORT.md
+│           ├── sast-and-sca-containers.md # Semgrep SAST & Google OSV-Scanner container guide
+│           ├── container-and-iac-trivy.md # Aqua Trivy Dockerfile, Compose & image scanning
+│           └── secrets-and-code-review.md # Gitleaks & OWASP ASVS / NIST review checklist
 ├── .gitignore                     # OS and editor ignore rules
 ├── AGENTS.md                      # Agent governance, harnessing, and release protocols
 ├── CHANGELOG.md                   # Version release notes following Keep a Changelog

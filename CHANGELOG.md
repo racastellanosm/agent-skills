@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.15.0] - 2026-10-17
+
+### Added
+- **SecOps Scanner & Security Audit Agent Skill (`secops-scanner`)**:
+  - Canonical Agent Skill package enforcing a 100% Dockerized ("Zero Host Dependencies") security audit workflow across 5 pillars: SAST (`semgrep/semgrep`), SCA/Lockfile CVEs (`ghcr.io/google/osv-scanner`), Container & IaC Security (`aquasec/trivy`), Secret Detection (`zricethezav/gitleaks`), and OWASP ASVS / NIST SP 800-63B architectural code review.
+  - Pure declarative Markdown specification without shell script wrappers to ensure 100% zero-warning compliance across automated supply-chain registries (`skills.sh`, Socket, Snyk, Gen).
+  - Canonical Markdown deliverable template (`references/audit-report-template.md`) generating structured `.build/security/SECURITY-AUDIT-REPORT.md` files with an executive posture scorecard, consolidated findings matrix, and actionable code remediations.
+  - Added new catalog grouping *"Security & SecOps"* in `skills.sh.json` and synchronized root documentation.
+
 ## [1.14.0] - 2026-08-23
 
 ### Added

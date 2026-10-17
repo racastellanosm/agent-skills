@@ -15,6 +15,13 @@
       "skills": [
         "docker-and-orchestration"
       ]
+    },
+    {
+      "title": "Security & SecOps",
+      "description": "100% Dockerized (Zero-Host-Dependencies) security auditing across SAST (Semgrep), SCA/OSV (Google OSV-Scanner), Container/IaC (Aqua Trivy), Secret Detection (Gitleaks), and OWASP ASVS code review.",
+      "skills": [
+        "secops-scanner"
+      ]
     }
   ]
 }
