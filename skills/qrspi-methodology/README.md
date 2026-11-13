@@ -85,6 +85,6 @@ QRSPI dynamically matches task complexity with the appropriate AI model weight t
 ## 🔗 References
 
 - [Everything We Got Wrong About Research-Plan-Implement](https://www.youtube.com/watch?v=YwZR6tc7qYg) by [Dexter Horthy](https://github.com/dexhorthy)
-- [From RPI to QRSPI: Rebuilding Structured Workflows for Coding Agents](https://alexlavaee.me/blog/from-rpi-to-qrspi/) by [Alex Lavaee](https://github.com/lavaman131)
+- From RPI to QRSPI: Rebuilding Structured Workflows for Coding Agents by [Alex Lavaee](https://github.com/lavaman131)
 - [Harness Engineering for Coding Agents](https://www.humanlayer.dev/blog/skill-issue-harness-engineering-for-coding-agents) by [HumanLayer](https://www.humanlayer.dev/)
 - [grill-me: Relentless Interviewing Skill for Coding Agents](https://skills.sh/mattpocock/skills/grill-me) by [Matt Pocock](https://github.com/mattpocock)

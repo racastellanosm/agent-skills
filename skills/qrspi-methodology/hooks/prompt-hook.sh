@@ -62,7 +62,7 @@ case "$STDIN_DATA" in
 {
   "injectSteps": [
     {
-      "ephemeralMessage": "[SYSTEM DIRECTIVE: QRSPI METHODOLOGY & MANDATORY TURN TERMINATION]\n• Active Target Phase : Phase ${ACTIVE_STAGE}\n• Recommended Weight  : ${MODEL_WEIGHT}\n• Primary Objective   : ${STAGE_GOAL}\n--------------------------------------------------------------------------------\nYou MUST follow the 5-phase QRSPI engineering standard:\n1. QUESTION -> 2. RESEARCH -> 3. STRUCTURE -> 4. PLAN -> 5. IMPLEMENT\n\nNON-NEGOTIABLE EXECUTION INVARIANTS:\n1. EXACTLY ONE PHASE PER TURN: Execute only the current active phase (${ACTIVE_STAGE}).\n2. MANDATORY TURN TERMINATION: After persisting the stage document, you MUST STOP calling tools, output your summary/questions, and END YOUR TURN.\n3. USER SIGN-OFF GATE: Do NOT proceed to the next phase until the user explicitly reviews and confirms approval in their reply.\n4. THINK BEFORE CODING: Never guess silently. State assumptions explicitly. Stop and ask when confused. Push back if simpler.\n5. SIMPLICITY FIRST: Minimum code that solves the problem. Zero speculative abstractions or configurability.\n6. SURGICAL CHANGES: Touch only what you must. Zero orthogonal edits. Preserve comments. Do not delete dead code silently.\n7. Model Weight: Use Model=\"pro\" for Phases 2-4, Model=\"flash\" for Phase 5."
+      "ephemeralMessage": "[QRSPI WORKFLOW CONTEXT & PHASE GATE]\n• Active Target Phase : Phase ${ACTIVE_STAGE}\n• Recommended Weight  : ${MODEL_WEIGHT}\n• Primary Objective   : ${STAGE_GOAL}\n--------------------------------------------------------------------------------\nYou MUST follow the 5-phase QRSPI engineering standard:\n1. QUESTION -> 2. RESEARCH -> 3. STRUCTURE -> 4. PLAN -> 5. IMPLEMENT\n\nNON-NEGOTIABLE EXECUTION INVARIANTS:\n1. EXACTLY ONE PHASE PER TURN: Execute only the current active phase (${ACTIVE_STAGE}).\n2. MANDATORY TURN TERMINATION: After persisting the stage document, you MUST STOP calling tools, output your summary/questions, and END YOUR TURN.\n3. USER SIGN-OFF GATE: Do NOT proceed to the next phase until the user explicitly reviews and confirms approval in their reply.\n4. THINK BEFORE CODING: Never guess silently. State assumptions explicitly. Stop and ask when confused. Push back if simpler.\n5. SIMPLICITY FIRST: Minimum code that solves the problem. Zero speculative abstractions or configurability.\n6. SURGICAL CHANGES: Touch only what you must. Zero orthogonal edits. Preserve comments. Do not delete dead code silently.\n7. Model Weight: Use Model=\"pro\" for Phases 2-4, Model=\"flash\" for Phase 5."
     }
   ]
 }
@@ -73,7 +73,7 @@ esac
 
 # Plain text fallback (Claude Code UserPromptSubmit / CLI direct invocation)
 cat <<EOF
-[SYSTEM DIRECTIVE: QRSPI METHODOLOGY & MANDATORY TURN TERMINATION]
+[QRSPI WORKFLOW CONTEXT & PHASE GATE]
 --------------------------------------------------------------------------------
 💡 COGNITIVE LOAD & PHASE GATE GUARDRAIL:
 • Active Target Phase : Phase ${ACTIVE_STAGE}
